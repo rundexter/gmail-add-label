@@ -6,7 +6,7 @@
   "inputs": [
     {
       "id": "id",
-      "title":"The ID of the message to retrieve"
+      "title":"The ID of the message to modify"
     },
     {
       "id": "userId",
@@ -37,5 +37,5 @@
     }
   ],
   /* Required.A display name for the module */
-  "title": "Google Archive Mail / Add Label"
+  "title": "Google Mail Remove Label / Add Label"
 }
