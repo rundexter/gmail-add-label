@@ -14,11 +14,11 @@
     },
     {
       "id": "addLabelIds",
-      "title":"The user's email address"
+      "title":"A list of IDs of labels to add to this message"
     },
     {
       "id": "removeLabelIds",
-      "title":"The user's email address"
+      "title":"A list IDs of labels to remove from this message"
     }
   ],
   //Required. Outputs the module emits.
