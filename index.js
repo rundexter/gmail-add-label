@@ -43,7 +43,6 @@ module.exports = {
         var oauth2Client = new OAuth2();
         oauth2Client.setCredentials({access_token: dexter.environment('access_token'), refresh_token: dexter.environment('refresh_token')});
 
-        console.log(step.input('addLabelIds').toArray());
         google.options({ auth: oauth2Client });
         google.gmail('v1').users.messages.modify({
             auth: oauth2Client,
