@@ -36,6 +36,7 @@
       "title":"labelIds"
     }
   ],
+  "icon": "google-plus",
   /* Required.A display name for the module */
   "title": "Google Mail Remove Label / Add Label"
 }
