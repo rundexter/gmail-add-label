@@ -63,7 +63,9 @@ module.exports = _.merge({
              */
             input: {
                 //Replace VAR1 with the name of an expected input, and add more inputs as needed.
-                VAR1: 'foo'
+                id: '1525faa8a5700d38',
+                userId: 'dexter.test@gmail.com',
+                removeLabelIds: ['CATEGORY_PROMOTIONS']
             }
         }
     }
