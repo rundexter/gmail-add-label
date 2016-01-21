@@ -15,8 +15,6 @@ var pickInputs = {
         'labelIds': 'labelIds'
     };
 
-var requireParams = ['id', 'userId'];
-
 module.exports = {
     /**
      * The main entry point for the Dexter module
