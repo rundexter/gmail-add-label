@@ -22,7 +22,7 @@ module.exports = {
         // map template keys
         _.map(templateInputs, function (templateValue, templateKey) {
 
-            var outputValueByKey = _.get(output, templateValue.keyName || templateValue, undefined);
+            var outputValueByKey = _.get(output, templateValue.key || templateValue, undefined);
             if (_.isUndefined(outputValueByKey)) {
                 result = _.isEmpty(result)? undefined : result;
                 return;
@@ -92,6 +92,7 @@ module.exports = {
             var keyObjName = keyObj.key || keyObj,
                 inputValue = _.get(inputs, keyObjName),
 
+                keyObjEnum = _.get(keyObj, 'validate.enum'),
                 keyObjValidate = _.get(keyObj, 'validate.check'),
                 keyObjError = _.get(keyObj, 'validate.error') || 'Validate error for field '.concat(keyObjName);
 
@@ -106,6 +107,9 @@ module.exports = {
                     noValid[keyObjName] = 'Validation key error. [validate.check] must be function or name validation rule.'
                 }
             }
+
+            if (keyObjEnum && _.isArray(keyObjEnum) && (keyObjEnum.indexOf(inputValue) === -1))
+                noValid[keyObjName] = 'Field [' + keyObjName + '] value not in (' + keyObjEnum.join() + ').';
 
             if ((inputValue === null || inputValue === undefined) && _.get(keyObj, 'validate.req') === true)
                 noValid[keyObjName] = 'Field [' + keyObjName + '] is required.';
