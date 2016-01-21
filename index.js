@@ -18,20 +18,6 @@ var pickInputs = {
 var requireParams = ['id', 'userId'];
 
 module.exports = {
-    checkAuthOptions: function (step, dexter) {
-        _.map(requireParams, function (reqParam) {
-            if(!step.input(reqParam).first()) {
-
-                this.fail('A ' + reqParam +' input variable is required for this module');
-            }
-        }, this);
-
-        if(!dexter.environment('google_access_token')) {
-
-            this.fail('A access_code environment variable is required for this module');
-        }
-    },
-
     /**
      * The main entry point for the Dexter module
      *
