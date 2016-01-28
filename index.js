@@ -4,7 +4,7 @@ var _ = require('lodash'),
     service = google.gmail('v1');
 
 var pickInputs = {
-        'id': { key: 'id', validate: { req: true } },
+        'id': { key: 'id', type: 'array', validate: { req: true } },
         'userId': { key: 'userId', validate: { req: true } },
         'addLabelIds': { key: 'resource.addLabelIds', type: 'array' },
         'removeLabelIds': { key: 'resource.removeLabelIds', type: 'array' }
@@ -37,11 +37,10 @@ module.exports = {
             access_token: _.get(credentials, 'access_token')
         });
         google.options({ auth: oauth2Client });
-
-        service.users.messages.modify(inputs, function (err, message) {
-
+        inputs.id.forEach(function (mailId) {
+            service.users.messages.modify(_.merge({id: mailId}, _.omit(inputs, 'id')), function (err, message) {
             err? this.fail(err) : this.complete(util.pickOutputs(message, pickOutputs));
         }.bind(this));
-
+        });
     }
 };
